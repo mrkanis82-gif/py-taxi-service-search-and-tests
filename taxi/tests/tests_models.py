@@ -40,7 +40,6 @@ class CarModelTest(TestCase):
             country="Germany"
         )
         car = Car.objects.create(model="A4", manufacturer=manufacturer)
-        manufacturer_id = manufacturer.id
         manufacturer.delete()
         self.assertFalse(Car.objects.filter(id=car.id).exists())
 
