@@ -23,7 +23,10 @@ class CarModelTest(TestCase):
         self.assertEqual(car.manufacturer.name, "Toyota")
 
     def test_car_drivers_relation(self):
-        driver = Driver.objects.create(username="John", license_number="ABC12345")
+        driver = Driver.objects.create(
+            username="John",
+            license_number="ABC12345"
+        )
         manufacturer = Manufacturer.objects.create(
             name="BMW",
             country="Germany"
@@ -56,12 +59,21 @@ class DriverModelTest(TestCase):
         self.assertEqual(str(driver), f"{username} ({first_name} {last_name})")
 
     def test_license_number_unique(self):
-        Driver.objects.create(username="driver1", license_number="ABC12345")
+        Driver.objects.create(
+            username="driver1",
+            license_number="ABC12345"
+        )
         with self.assertRaises(Exception):
-            Driver.objects.create(username="driver2", license_number="ABC12345")
+            Driver.objects.create(
+                username="driver2",
+                license_number="ABC12345"
+            )
 
     def test_driver_absolute_url(self):
-        driver = Driver.objects.create(username="john", license_number="ABC12345")
+        driver = Driver.objects.create(
+            username="john",
+            license_number="ABC12345"
+        )
         self.assertEqual(driver.get_absolute_url(), f"/drivers/{driver.pk}/")
 
 
